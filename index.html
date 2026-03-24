@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarbhangaConnect - Professional Home Services at Your Doorstep</title>
+    <meta name="description" content="Book trusted electricians, plumbers, cleaners & more in Darbhanga. 100+ verified professionals, instant booking, secure payments. Available 24/7.">
+    <meta name="keywords" content="Darbhanga services, electrician, plumber, home repair, cleaning services, bike repair, car mechanic">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 100vh;
+        }
+        /* Real Liquid UI Styles */
+        .liquid-container {
+            background: rgba(148, 163, 184, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 20px;
+        }
+        
+        .glass-effect {
+            background: rgba(203, 213, 225, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(203, 213, 225, 0.2);
+        }
+        
+        .hero-gradient { 
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #475569 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%2306b6d4" stop-opacity="0.1"/><stop offset="100%" stop-color="%2306b6d4" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+            animation: liquidFlow 25s ease-in-out infinite;
+        }
+        
+        .service-card {
+            background: rgba(51, 65, 85, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.1);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.15), transparent);
+            transition: left 0.6s;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.2);
+            background: rgba(51, 65, 85, 0.9);
+            border-color: rgba(6, 182, 212, 0.4);
+        }
+        
+        .liquid-button {
+            background: linear-gradient(135deg, #0891b2, #06b6d4, #22d3ee);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.25);
+        }
+        
+        .liquid-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .liquid-button:hover::before {
+            left: 100%;
+        }
+        
+        .liquid-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.4);
+            background: linear-gradient(135deg, #0e7490, #0891b2, #06b6d4);
+        }
+        
+        .floating { 
+            animation: liquidFloat 8s ease-in-out infinite; 
+        }
+        
+        @keyframes liquidFloat { 
+            0%, 100% { transform: translateY(0px) rotate(0deg); } 
+            25% { transform: translateY(-25px) rotate(1deg); }
+            50% { transform: translateY(-15px) rotate(-1deg); }
+            75% { transform: translateY(-20px) rotate(0.5deg); }
+        }
+        
+        @keyframes liquidFlow {
+            0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
+            25% { transform: translateX(50px) translateY(-30px) scale(1.1); }
+            50% { transform: translateX(-30px) translateY(40px) scale(0.9); }
+            75% { transform: translateX(40px) translateY(-20px) scale(1.05); }
+        }
+        
+        .fade-in { 
+            animation: fadeInUp 1.2s ease-out; 
+        }
+        
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(60px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 1.2s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-120px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1.2s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(120px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1.8s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3) rotate(-15deg); }
+            50% { opacity: 1; transform: scale(1.15) rotate(8deg); }
+            70% { transform: scale(0.9) rotate(-3deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        
+        .pulse-glow {
+            animation: liquidGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes liquidGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.6); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6, #2563eb, #1e40af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .liquid-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(147, 197, 253, 0.3);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+        }
+        
+        .morphing-blob {
+            border-radius: 35% 65% 70% 30% / 35% 35% 65% 65%;
+            animation: liquidMorph 10s ease-in-out infinite;
+        }
+        
+        @keyframes liquidMorph {
+            0%, 100% { border-radius: 35% 65% 70% 30% / 35% 35% 65% 65%; }
+            20% { border-radius: 60% 40% 80% 20% / 80% 50% 50% 20%; }
+            40% { border-radius: 45% 55% 30% 70% / 60% 25% 75% 40%; }
+            60% { border-radius: 70% 30% 50% 50% / 40% 70% 30% 60%; }
+            80% { border-radius: 30% 70% 60% 40% / 65% 45% 55% 35%; }
+        }
+        
+        .water-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .water-ripple::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
+            animation: ripple 3s ease-in-out infinite;
+        }
+        
+        @keyframes ripple {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav style="background: #0f172a; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(148,163,184,0.15);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0.85rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <!-- Logo + Brand -->
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #06b6d4, #0891b2); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <span style="color: white; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px;">DC</span>
+                </div>
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: #3b82f6; line-height: 1.2; letter-spacing: -0.5px;">DarbhangaConnect</div>
+                    <div style="font-size: 0.85rem; color: #94a3b8; font-weight: 500;">Professional Home Services</div>
+                </div>
+            </div>
+            <!-- Buttons -->
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span id="userWelcome" class="hidden" style="font-size: 0.875rem; color: #cbd5e1;"></span>
+                <button id="loginBtn" onclick="window.location.href='login.html'" class="liquid-button" style="padding: 10px 24px; font-size: 0.95rem;">
+                    Login
+                </button>
+                <button id="logoutBtn" onclick="logout()" class="hidden" style="background: rgba(239,68,68,0.8); color: white; padding: 10px 20px; border-radius: 12px; font-weight: 600; border: none; cursor: pointer;">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Liquid Hero Section -->
+    <section class="hero-gradient text-white relative overflow-hidden min-h-screen flex items-center">
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="fade-in">
+                    <div class="liquid-container rounded-full px-6 py-3 mb-8 inline-flex items-center water-ripple animated-border">
+                        <span class="w-3 h-3 bg-cyan-400 rounded-full mr-3 animate-pulse ping-badge"></span>
+                        <span class="text-sm font-medium text-slate-200">100+ Verified Professionals Online</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-8">
+                        <span class="text-slate-100">Professional Services</span>
+                        <span class="block neon-text">
+                            at Your Doorstep
+                        </span>
+                    </h1>
+                    
+                    <p class="text-xl text-slate-300 mb-10 leading-relaxed">
+                        Book trusted electricians, plumbers, cleaners & more in Darbhanga. 
+                        <strong class="text-cyan-300">16+ services available</strong>, verified professionals, and secure payments.
+                    </p>
+                    
+                    <!-- Liquid Search Bar -->
+                    <div class="liquid-container rounded-3xl p-3 shadow-2xl mb-10">
+                        <div class="flex items-center">
+                            <div class="flex-1 relative">
+                                <svg class="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                                <input type="text" id="heroSearchInput" 
+                                       placeholder="Search for 'Electrician', 'Plumber', 'Cleaning'..." 
+                                       class="w-full pl-16 pr-6 py-5 bg-transparent text-slate-200 placeholder-slate-400 rounded-2xl focus:outline-none">
+                            </div>
+                            <button onclick="performHeroSearch()" 
+                                    class="liquid-button ml-3">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-6 mb-10">
+                        <button onclick="scrollToServices()" 
+                                class="liquid-button text-lg px-10 py-5">
+                            Book Service Now
+                        </button>
+                        <button onclick="window.open('tel:+917903628761')" 
+                                class="liquid-container text-slate-200 px-10 py-5 rounded-full font-bold text-lg hover:bg-slate-700/30 transition-all border border-slate-500">
+                            📞 Call Now
+                        </button>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="flex flex-wrap items-center gap-8 text-sm">
+                        <div class="flex items-center liquid-container px-4 py-2 rounded-full">
+                            <span class="text-yellow-500 mr-2">⭐⭐⭐⭐⭐</span>
+                            <span class="text-slate-300">4.8/5 Rating</span>
+                        </div>
+                        <div class="flex items-center liquid-container px-4 py-2 rounded-full">
+                            <span class="text-green-500 mr-2">✅</span>
+                            <span class="text-slate-300">500+ Happy Customers</span>
+                        </div>
+                        <div class="flex items-center liquid-container px-4 py-2 rounded-full">
+                            <span class="text-blue-500 mr-2">🚀</span>
+                            <span class="text-slate-300">30-Min Response</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Floating Service Cards -->
+                <div class="relative">
+                    <div class="floating">
+                        <div class="liquid-container rounded-3xl p-8">
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="glass-effect rounded-2xl p-6 text-center morphing-blob">
+                                    <div class="text-4xl mb-3">⚡</div>
+                                    <div class="font-semibold text-slate-200">Electrician</div>
+                                    <div class="text-sm text-slate-400">From ₹150</div>
+                                </div>
+                                <div class="glass-effect rounded-2xl p-6 text-center morphing-blob">
+                                    <div class="text-4xl mb-3">🚰</div>
+                                    <div class="font-semibold text-slate-200">Plumber</div>
+                                    <div class="text-sm text-slate-400">From ₹120</div>
+                                </div>
+                                <div class="glass-effect rounded-2xl p-6 text-center morphing-blob">
+                                    <div class="text-4xl mb-3">🧹</div>
+                                    <div class="font-semibold text-slate-200">Cleaning</div>
+                                    <div class="text-sm text-slate-400">From ₹120</div>
+                                </div>
+                                <div class="glass-effect rounded-2xl p-6 text-center morphing-blob">
+                                    <div class="text-4xl mb-3">🔧</div>
+                                    <div class="font-semibold text-slate-200">Repair</div>
+                                    <div class="text-sm text-slate-400">From ₹100</div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="glass-effect rounded-2xl p-6 text-center morphing-blob">
+                                    <div class="text-4xl mb-3">🚗</div>
+                                    <div class="font-semibold text-slate-200">Car Service</div>
+                                    <div class="text-sm text-slate-400">From ₹200</div>
+                                </div>
+                                <div class="glass-effect rounded-2xl p-6 text-center morphing-blob">
+                                    <div class="text-4xl mb-3">❄️</div>
+                                    <div class="font-semibold text-slate-200">AC Repair</div>
+                                    <div class="text-sm text-slate-400">From ₹180</div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-6">
+                                <div class="text-sm text-slate-400">+ 10 More Services</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liquid Services Section -->
+    <section id="services" class="py-20 relative reveal">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-700/50"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16 fade-in">
+                <div class="liquid-container rounded-full px-6 py-3 mb-6 inline-flex items-center bounce-in">
+                    <span class="font-semibold text-sm text-slate-200">OUR SERVICES</span>
+                </div>
+                <h2 class="text-4xl lg:text-6xl font-bold text-slate-100 mb-8">
+                    What do you need help with?
+                </h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    Choose from our wide range of 16+ professional services. All our technicians are verified, 
+                    insured, and ready to help you 24/7.
+                </p>
+            </div>
+
+            <!-- Liquid Search -->
+            <div class="max-w-2xl mx-auto mb-16 slide-in-left">
+                <div class="liquid-container rounded-3xl p-3">
+                    <div class="flex items-center">
+                        <svg class="ml-6 w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" id="searchInput" 
+                               placeholder="Search services: electrician, plumber, cleaning..." 
+                               class="flex-1 px-6 py-4 bg-transparent text-slate-200 placeholder-slate-400 focus:outline-none text-lg"
+                               aria-label="Search for services">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Service Cards Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="electrician">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-400 to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">⚡</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Electrician</h3>
+                        <p class="text-sm text-slate-300 mb-4">Wiring, repairs, installations</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹150
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="plumber">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🚰</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Plumber</h3>
+                        <p class="text-sm text-slate-300 mb-4">Pipes, leaks, installations</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹120
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="cleaning">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-sky-400 to-blue-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🧹</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Cleaning</h3>
+                        <p class="text-sm text-slate-300 mb-4">Deep clean, maintenance</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹120
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="bike-repair">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🔧</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Bike Repair</h3>
+                        <p class="text-sm text-slate-300 mb-4">Service, parts, maintenance</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹120
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="car-mechanic">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-indigo-400 to-blue-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🚗</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Car Mechanic</h3>
+                        <p class="text-sm text-slate-300 mb-4">Auto repair, servicing</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹200
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="ac-technician">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-400 to-sky-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">❄️</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">AC Technician</h3>
+                        <p class="text-sm text-slate-300 mb-4">Installation, repair, service</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹180
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="labour-mistri">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-slate-400 to-blue-400 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">👷</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Labour Mistri</h3>
+                        <p class="text-sm text-slate-300 mb-4">Construction, repairs</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹100
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="mobile-repair">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">📱</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Mobile Repair</h3>
+                        <p class="text-sm text-slate-300 mb-4">Screen, battery, software</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹120
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="carpenter">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🪚</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Carpenter</h3>
+                        <p class="text-sm text-slate-300 mb-4">Furniture, doors, repairs</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹150
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="painter">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-sky-500 to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🎨</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Painter</h3>
+                        <p class="text-sm text-slate-300 mb-4">Wall painting, touch-ups</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹130
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="gardener">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-indigo-400 to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🌱</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Gardener</h3>
+                        <p class="text-sm text-slate-300 mb-4">Lawn care, plant maintenance</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹110
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="pest-control">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-slate-500 to-blue-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🐛</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Pest Control</h3>
+                        <p class="text-sm text-slate-300 mb-4">Termite, cockroach control</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹200
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="water-tank-cleaning">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🚰</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Water Tank Cleaning</h3>
+                        <p class="text-sm text-slate-300 mb-4">Tank cleaning, disinfection</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹300
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="appliance-repair">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-sky-400 to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">🔌</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Appliance Repair</h3>
+                        <p class="text-sm text-slate-300 mb-4">TV, fridge, washing machine</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹180
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="solar-technician">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-indigo-500 to-blue-700 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">☀️</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Solar Technician</h3>
+                        <p class="text-sm text-slate-300 mb-4">Solar panel installation</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹250
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card shimmer tilt-card stagger-item p-8 cursor-pointer group" data-service="beauty-salon">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-sky-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform morphing-blob">
+                            <span class="text-4xl">💄</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 mb-3 text-lg">Beauty Services</h3>
+                        <p class="text-sm text-slate-300 mb-4">Hair, makeup, spa at home</p>
+                        <div class="liquid-container text-slate-200 px-4 py-2 rounded-full text-sm font-semibold">
+                            From ₹200
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Services Button -->
+            <div class="text-center">
+                <button onclick="showAllServices()" 
+                        class="liquid-button text-lg px-10 py-5">
+                    View All Services →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 relative reveal">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-700/50"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 fade-in">
+                <div class="liquid-container rounded-full px-6 py-3 mb-6 inline-flex items-center bounce-in">
+                    <span class="font-semibold text-sm text-slate-200">HOW IT WORKS</span>
+                </div>
+                <h2 class="text-4xl lg:text-6xl font-bold text-slate-100 mb-8">
+                    Book in 3 Simple Steps
+                </h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    Getting professional help has never been easier. Book, pay, and get service - all in minutes.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center group slide-in-left">
+                    <div class="w-20 h-20 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform pulse-glow morphing-blob">
+                        <span class="text-white text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-100 mb-4">Choose Service</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Select from 16+ professional services. Browse verified technicians with ratings and reviews.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center group fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform pulse-glow morphing-blob">
+                        <span class="text-white text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-100 mb-4">Book & Pay</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Fill your details, choose payment method. Pay online for 10% discount or pay after service.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center group slide-in-right">
+                    <div class="w-20 h-20 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform pulse-glow morphing-blob">
+                        <span class="text-white text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-100 mb-4">Get Service</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Professional arrives within 30 minutes. Quality service guaranteed with 1-year warranty.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-700/50"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="slide-in-left">
+                    <div class="liquid-container rounded-full px-6 py-3 mb-8 inline-flex items-center bounce-in">
+                        <span class="font-semibold text-sm text-slate-200">WHY CHOOSE US</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-6xl font-bold text-slate-100 mb-8">
+                        <span class="text-gradient">Trusted by 500+</span> Families in Darbhanga
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 card-hover liquid-container rounded-2xl p-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-xl flex items-center justify-center flex-shrink-0 morphing-blob">
+                                <span class="text-white text-xl">✅</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-100 mb-2">100% Verified Professionals</h3>
+                                <p class="text-slate-300">Background checked, trained, and insured technicians for your safety.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 card-hover liquid-container rounded-2xl p-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-xl flex items-center justify-center flex-shrink-0 morphing-blob">
+                                <span class="text-white text-xl">🚀</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-100 mb-2">30-Minute Response Time</h3>
+                                <p class="text-slate-300">Quick response for urgent repairs. Emergency services available 24/7.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 card-hover liquid-container rounded-2xl p-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-xl flex items-center justify-center flex-shrink-0 morphing-blob">
+                                <span class="text-white text-xl">💳</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-100 mb-2">Secure Online Payments</h3>
+                                <p class="text-slate-300">Multiple payment options with 10% discount on online payments.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 card-hover liquid-container rounded-2xl p-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-sky-400 to-blue-400 rounded-xl flex items-center justify-center flex-shrink-0 morphing-blob">
+                                <span class="text-white text-xl">🛡️</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-100 mb-2">1-Year Service Warranty</h3>
+                                <p class="text-slate-300">All services come with warranty. Free re-service if issues persist.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Stats -->
+                <div class="liquid-container rounded-3xl p-8 slide-in-right">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-cyan-400 mb-2" data-target="500" data-suffix="+">500+</div>
+                            <div class="text-slate-300 font-medium">Happy Customers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-teal-400 mb-2" data-target="100" data-suffix="+">100+</div>
+                            <div class="text-slate-300 font-medium">Verified Experts</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-400 mb-2">4.8★</div>
+                            <div class="text-slate-300 font-medium">Average Rating</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-emerald-400 mb-2">24/7</div>
+                            <div class="text-slate-300 font-medium">Support Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 relative reveal">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-700/50"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 fade-in">
+                <div class="liquid-container rounded-full px-6 py-3 mb-6 inline-flex items-center bounce-in">
+                    <span class="font-semibold text-sm text-slate-200">TESTIMONIALS</span>
+                </div>
+                <h2 class="text-4xl lg:text-6xl font-bold text-slate-100 mb-8">
+                    What Our <span class="text-gradient">Customers Say</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="liquid-container rounded-3xl p-8 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full flex items-center justify-center text-white font-bold mr-4 morphing-blob">
+                            R
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-100">Rahul Kumar</div>
+                            <div class="text-slate-300 text-sm">Kadirabad, Darbhanga</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-300 italic">
+                        "Excellent electrician service! Fixed my wiring issue in 30 minutes. Very professional and affordable pricing."
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="liquid-container rounded-3xl p-8 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center text-white font-bold mr-4 morphing-blob">
+                            P
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-100">Priya Singh</div>
+                            <div class="text-slate-300 text-sm">Laheriasarai, Darbhanga</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-300 italic">
+                        "Best cleaning service in Darbhanga! They cleaned my entire house perfectly. Will definitely book again."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="liquid-container rounded-3xl p-8 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full flex items-center justify-center text-white font-bold mr-4 morphing-blob">
+                            A
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-100">Amit Jha</div>
+                            <div class="text-slate-300 text-sm">Tower Chowk, Darbhanga</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-300 italic">
+                        "Quick plumber service for emergency leak. Arrived in 20 minutes and fixed everything perfectly!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-transparent to-teal-500/20"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl lg:text-6xl font-bold mb-8 fade-in text-white">
+                Ready to Get Started?
+            </h2>
+            <p class="text-xl text-slate-200 mb-10 max-w-2xl mx-auto slide-in-left">
+                Join 500+ satisfied customers in Darbhanga. Book your service now and get 10% discount on online payment.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center bounce-in">
+                <button onclick="window.location.href='page_2.html'" 
+                        class="liquid-button text-lg px-10 py-5">
+                    Book Service Now
+                </button>
+                <button onclick="openScheduleModal()" 
+                        class="liquid-container text-slate-200 px-10 py-5 rounded-full font-bold text-lg hover:bg-slate-700/30 transition-all border border-cyan-500">
+                    📅 Schedule Service
+                </button>
+                <button onclick="window.open('https://wa.me/917903628761')" 
+                        class="liquid-container text-slate-200 px-10 py-5 rounded-full font-bold text-lg hover:bg-slate-700/30 transition-all border border-slate-500">
+                    💬 WhatsApp Us
+                </button>
+            </div>
+            
+            <div class="mt-10 text-slate-300">
+                <p>📞 Call: +91 7903628761 | 🕒 Available 24/7 | 📍 Serving all Darbhanga</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-xl flex items-center justify-center pulse-glow morphing-blob">
+                            <span class="text-white font-bold text-lg">DC</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gradient">DarbhangaConnect</h3>
+                            <p class="text-slate-300">Professional Home Services</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-200 mb-6 leading-relaxed">
+                        Your trusted partner for all home service needs in Darbhanga. 
+                        We connect you with verified professionals for quality service at your doorstep.
+                    </p>
+                    
+                    <!-- Social Links -->
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-cyan-600 transition-colors">
+                            <span>📘</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-cyan-600 transition-colors">
+                            <span>📷</span>
+                        </a>
+                        <a href="https://wa.me/917903628761" class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors">
+                            <span>💬</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-cyan-300">Our Services</h4>
+                    <ul class="space-y-3 text-slate-200">
+                        <li><a href="#" class="hover:text-cyan-300 transition-colors">Electrician</a></li>
+                        <li><a href="#" class="hover:text-cyan-300 transition-colors">Plumber</a></li>
+                        <li><a href="#" class="hover:text-cyan-300 transition-colors">Cleaning</a></li>
+                        <li><a href="#" class="hover:text-cyan-300 transition-colors">Bike Repair</a></li>
+                        <li><a href="#" class="hover:text-cyan-300 transition-colors">Car Mechanic</a></li>
+                        <li><a href="#" class="hover:text-cyan-300 transition-colors">AC Technician</a></li>
+                        <li><a href="#" class="hover:text-cyan-300 transition-colors">Carpenter</a></li>
+                        <li><a href="#" class="hover:text-cyan-300 transition-colors">Painter</a></li>
+                        <li><a href="#" class="hover:text-cyan-300 transition-colors">+ 8 More</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-cyan-300">Contact Us</h4>
+                    <div class="space-y-4 text-slate-200">
+                        <div class="flex items-center space-x-3">
+                            <span>📞</span>
+                            <span>+91 7903628761</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span>📧</span>
+                            <span>contact@darbhangaconnect.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span>📍</span>
+                            <span>Darbhanga, Bihar, India</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span>🕒</span>
+                            <span>24/7 Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-slate-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-300 text-sm">
+                    © 2025-26 DarbhangaConnect. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-slate-300 hover:text-cyan-300 text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-slate-300 hover:text-cyan-300 text-sm transition-colors">Terms of Service</a>
+                    <a href="admin.html" class="text-slate-300 hover:text-cyan-300 text-sm transition-colors">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="window.open('https://wa.me/917903628761')" 
+                class="w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 animate-pulse">
+            <span class="text-2xl">💬</span>
+        </button>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div id="backToTop" class="fixed bottom-6 left-6 z-50 hidden">
+        <button onclick="scrollToTop()" 
+                class="w-12 h-12 bg-gray-800 hover:bg-gray-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all">
+            <span>↑</span>
+        </button>
+    </div>
+
+    <!-- Schedule Modal -->
+    <div id="scheduleModal" class="fixed inset-0 z-50 hidden flex items-center justify-center" style="background:rgba(0,0,0,0.7);">
+        <div class="rounded-3xl p-8 w-full max-w-md mx-4" style="background:#1e293b;border:1px solid rgba(148,163,184,0.3);">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-white">📅 Schedule a Service</h3>
+                <button onclick="closeScheduleModal()" class="text-slate-400 hover:text-white text-2xl">×</button>
+            </div>
+            <form onsubmit="submitSchedule(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-200 mb-2">Your Name</label>
+                    <input type="text" id="sch-name" required placeholder="Enter your name"
+                           class="w-full px-4 py-3 rounded-xl text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                           style="background:rgba(51,65,85,0.8);border:1px solid rgba(148,163,184,0.3);">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-200 mb-2">Phone Number</label>
+                    <input type="tel" id="sch-phone" required placeholder="10 digit number"
+                           class="w-full px-4 py-3 rounded-xl text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                           style="background:rgba(51,65,85,0.8);border:1px solid rgba(148,163,184,0.3);">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-200 mb-2">Service Required</label>
+                    <select id="sch-service" required
+                            class="w-full px-4 py-3 rounded-xl text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            style="background:rgba(51,65,85,0.8);border:1px solid rgba(148,163,184,0.3);">
+                        <option value="">-- Select Service --</option>
+                        <option>Electrician</option>
+                        <option>Plumber</option>
+                        <option>Cleaning</option>
+                        <option>Bike Repair</option>
+                        <option>Car Mechanic</option>
+                        <option>AC Technician</option>
+                        <option>Labour Mistri</option>
+                        <option>Mobile Repair</option>
+                        <option>Carpenter</option>
+                        <option>Painter</option>
+                        <option>Gardener</option>
+                        <option>Pest Control</option>
+                        <option>Water Tank Cleaning</option>
+                        <option>Appliance Repair</option>
+                        <option>Solar Technician</option>
+                        <option>Beauty Services</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-200 mb-2">Preferred Date</label>
+                    <input type="date" id="sch-date" required
+                           class="w-full px-4 py-3 rounded-xl text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                           style="background:rgba(51,65,85,0.8);border:1px solid rgba(148,163,184,0.3);">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-200 mb-2">Preferred Time</label>
+                    <select id="sch-time" required
+                            class="w-full px-4 py-3 rounded-xl text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            style="background:rgba(51,65,85,0.8);border:1px solid rgba(148,163,184,0.3);">
+                        <option value="">-- Select Time --</option>
+                        <option>Morning (8AM - 11AM)</option>
+                        <option>Afternoon (11AM - 2PM)</option>
+                        <option>Evening (2PM - 5PM)</option>
+                        <option>Late Evening (5PM - 8PM)</option>
+                    </select>
+                </div>
+                <button type="submit" class="liquid-button w-full py-4 text-lg font-bold">
+                    Confirm Schedule
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Animation Engine -->
+    <script>
+    // 1. Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        document.getElementById('scroll-progress').style.width = scrolled + '%';
+    });
+
+    // 2. Floating Particles
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 25; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 18 + 6;
+        p.style.cssText = `
+            width:${size}px; height:${size}px;
+            left:${Math.random()*100}%;
+            animation-duration:${Math.random()*15+10}s;
+            animation-delay:${Math.random()*10}s;
+            opacity:${Math.random()*0.4+0.1};
+        `;
+        container.appendChild(p);
+    }
+
+    // 3. Cursor Glow
+    const glow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top  = e.clientY + 'px';
+    });
+
+    // 4. Scroll Reveal for sections
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // 5. Stagger service cards
+    const staggerObserver = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('visible'), i * 80);
+            }
+        });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.stagger-item').forEach(el => staggerObserver.observe(el));
+
+    // 6. Count-up for stats
+    function animateCount(el, target, suffix = '') {
+        let start = 0;
+        const duration = 2000;
+        const step = target / (duration / 16);
+        const timer = setInterval(() => {
+            start += step;
+            if (start >= target) { start = target; clearInterval(timer); }
+            el.textContent = Math.floor(start) + suffix;
+        }, 16);
+    }
+    const statsObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                statsObserver.unobserve(e.target);
+                const t = e.target.dataset.target;
+                const s = e.target.dataset.suffix || '';
+                animateCount(e.target, parseInt(t), s);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => statsObserver.observe(el));
+
+    // 7. Button ripple effect
+    document.querySelectorAll('.liquid-button, .ripple-effect').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const circle = document.createElement('span');
+            circle.className = 'ripple-circle';
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            circle.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`;
+            this.appendChild(circle);
+            setTimeout(() => circle.remove(), 600);
+        });
+    });
+    </script>
+
+    <script>
+        function openScheduleModal() {
+            document.getElementById('scheduleModal').classList.remove('hidden');
+            // Set min date to today
+            document.getElementById('sch-date').min = new Date().toISOString().split('T')[0];
+        }
+        function closeScheduleModal() {
+            document.getElementById('scheduleModal').classList.add('hidden');
+        }
+        function submitSchedule(e) {
+            e.preventDefault();
+            const name = document.getElementById('sch-name').value;
+            const phone = document.getElementById('sch-phone').value;
+            const service = document.getElementById('sch-service').value;
+            const date = document.getElementById('sch-date').value;
+            const time = document.getElementById('sch-time').value;
+
+            const text = `📅 *SCHEDULED BOOKING - DARBHANGA CONNECT*%0A%0A` +
+                         `👤 *Name:* ${name}%0A` +
+                         `📱 *Phone:* +91 ${phone}%0A` +
+                         `🔧 *Service:* ${service}%0A` +
+                         `📆 *Date:* ${date}%0A` +
+                         `🕐 *Time:* ${time}%0A%0A` +
+                         `Please confirm this scheduled booking.`;
+
+            closeScheduleModal();
+            window.open(`https://wa.me/917903628761?text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

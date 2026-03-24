@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Darbhanga Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    
+    <nav style="background: #0f172a; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(148,163,184,0.15);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0.85rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <button onclick="goBack()" style="color: #94a3b8; margin-right: 4px;">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #06b6d4, #0891b2); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <span style="color: white; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px;">DC</span>
+                </div>
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: #3b82f6; line-height: 1.2; letter-spacing: -0.5px;">DarbhangaConnect</div>
+                    <div style="font-size: 0.85rem; color: #94a3b8; font-weight: 500;">Professional Home Services</div>
+                </div>
+            </div>
+            <div style="background:rgba(51,65,85,0.6);border:1px solid rgba(148,163,184,0.3);color:#34d399;padding:0.25rem 0.75rem;border-radius:9999px;font-weight:bold;font-size:0.875rem;">
+                🔒 Secure Payment
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 max-w-2xl">
+        
+        <!-- Booking Summary -->
+        <div class="rounded-xl p-6 mb-6" style="background:rgba(30,41,59,0.95);border:1px solid rgba(148,163,184,0.3);">
+            <h2 class="text-xl font-bold text-slate-100 mb-4">Booking Summary</h2>
+            <div id="booking-summary" class="space-y-3 text-slate-300">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Payment Options -->
+        <div class="rounded-xl p-6 mb-6" style="background:rgba(30,41,59,0.95);border:1px solid rgba(148,163,184,0.3);">
+            <h3 class="text-lg font-bold text-slate-100 mb-4">Choose Payment Method</h3>
+            
+            <div class="space-y-4">
+                <!-- Pay Now Option -->
+                <div style="border: 2px solid rgba(6,182,212,0.5); border-radius: 12px; padding: 1rem; background: rgba(6,182,212,0.08);">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-cyan-300">💳 Pay Now (Recommended)</h4>
+                            <p class="text-sm text-slate-300">Get 10% discount + Priority service</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="text-xs px-2 py-1 rounded" style="background:rgba(16,185,129,0.2);color:#34d399;">10% OFF</span>
+                                <span class="text-xs px-2 py-1 rounded" style="background:rgba(6,182,212,0.2);color:#67e8f9;">Priority</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm text-slate-400 line-through" id="original-price">₹0</div>
+                            <div class="text-xl font-bold text-green-400" id="discounted-price">₹0</div>
+                        </div>
+                    </div>
+                    <button onclick="payNow()" 
+                            class="liquid-button w-full mt-4 py-3 font-semibold">
+                        Pay Now with Razorpay
+                    </button>
+                </div>
+
+                <!-- Pay Later Option -->
+                <div style="border: 2px solid rgba(148,163,184,0.3); border-radius: 12px; padding: 1rem; background: rgba(51,65,85,0.4);">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-slate-200">💰 Pay After Service</h4>
+                            <p class="text-sm text-slate-400">Pay cash when service is completed</p>
+                        </div>
+                        <div class="text-xl font-bold text-slate-200" id="full-price">₹0</div>
+                    </div>
+                    <button onclick="payLater()" 
+                            class="w-full mt-4 py-3 rounded-lg font-semibold transition" style="background:rgba(71,85,105,0.8);color:#e2e8f0;border:1px solid rgba(148,163,184,0.3);">
+                        Book Now, Pay Later
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Info -->
+        <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:1rem;">
+            <div class="flex items-center gap-3">
+                <div class="text-green-400 text-2xl">🔒</div>
+                <div>
+                    <h4 class="font-bold text-green-300">100% Secure Payment</h4>
+                    <p class="text-sm text-slate-300">Your payment information is encrypted and secure. Powered by Razorpay.</p>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <script>
+        let bookingData = {};
+        let originalPrice = 0;
+        let discountedPrice = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBookingData();
+            calculatePrices();
+        });
+
+        function loadBookingData() {
+            // Get booking data from localStorage or URL params
+            const urlParams = new URLSearchParams(window.location.search);
+            const storedBooking = localStorage.getItem('currentBooking');
+            
+            if (storedBooking) {
+                bookingData = JSON.parse(storedBooking);
+            } else {
+                // Fallback data
+                bookingData = {
+                    service: urlParams.get('service') || 'Electrician',
+                    name: urlParams.get('name') || 'Customer',
+                    phone: urlParams.get('phone') || '9999999999',
+                    area: urlParams.get('area') || 'Darbhanga',
+                    address: urlParams.get('address') || 'Address',
+                    price: parseInt(urlParams.get('price')) || 150
+                };
+            }
+
+            displayBookingSummary();
+        }
+        function displayBookingSummary() {
+            const summaryDiv = document.getElementById('booking-summary');
+            summaryDiv.innerHTML = `
+                <div class="flex justify-between py-2 border-b">
+                    <span class="text-gray-600">Service:</span>
+                    <span class="font-semibold">${bookingData.service}</span>
+                </div>
+                <div class="flex justify-between py-2 border-b">
+                    <span class="text-gray-600">Customer:</span>
+                    <span class="font-semibold">${bookingData.name}</span>
+                </div>
+                <div class="flex justify-between py-2 border-b">
+                    <span class="text-gray-600">Phone:</span>
+                    <span class="font-semibold">+91 ${bookingData.phone}</span>
+                </div>
+                <div class="flex justify-between py-2 border-b">
+                    <span class="text-gray-600">Location:</span>
+                    <span class="font-semibold">${bookingData.area}</span>
+                </div>
+                <div class="flex justify-between py-2 border-b">
+                    <span class="text-gray-600">Address:</span>
+                    <span class="font-semibold">${bookingData.address}</span>
+                </div>
+                <div class="flex justify-between py-2 text-lg font-bold">
+                    <span>Service Charge:</span>
+                    <span class="text-blue-600">₹${bookingData.price}</span>
+                </div>
+            `;
+        }
+
+        function calculatePrices() {
+            originalPrice = bookingData.price || 150;
+            discountedPrice = Math.round(originalPrice * 0.9); // 10% discount
+            
+            document.getElementById('original-price').textContent = `₹${originalPrice}`;
+            document.getElementById('discounted-price').textContent = `₹${discountedPrice}`;
+            document.getElementById('full-price').textContent = `₹${originalPrice}`;
+        }
+
+        function payNow() {
+            // Show loading state
+            const button = (typeof event !== 'undefined' && event && event.target) || document.querySelector('button[onclick*="payNow"]');
+            const originalText = button ? button.innerHTML : '';
+            if (button) {
+                button.innerHTML = '<span class="animate-spin">⏳</span> Processing...';
+                button.disabled = true;
+            }
+
+            // ⚠️ IMPORTANT: Replace 'YOUR_RAZORPAY_KEY_HERE' with your actual Razorpay Key ID
+            // Get it from: https://dashboard.razorpay.com/app/keys
+            const RAZORPAY_KEY = 'YOUR_RAZORPAY_KEY_HERE';
+
+            if (!RAZORPAY_KEY || RAZORPAY_KEY === 'YOUR_RAZORPAY_KEY_HERE') {
+                showNotification('❌ Payment not configured. Please contact support.', 'error');
+                if (button) { button.innerHTML = originalText; button.disabled = false; }
+                return;
+            }
+
+            // Razorpay configuration
+            const options = {
+                key: RAZORPAY_KEY,
+                amount: discountedPrice * 100, // Amount in paise
+                currency: 'INR',
+                name: 'Darbhanga Connect',
+                description: `${bookingData.service} Service`,
+                image: 'https://via.placeholder.com/100x100?text=DC',
+                order_id: '', // Will be generated from backend in production
+                handler: function(response) {
+                    // Payment successful
+                    handlePaymentSuccess(response);
+                },
+                prefill: {
+                    name: bookingData.name,
+                    email: '', // Add email if available
+                    contact: bookingData.phone
+                },
+                notes: {
+                    service: bookingData.service,
+                    area: bookingData.area,
+                    address: bookingData.address
+                },
+                theme: {
+                    color: '#1e40af'
+                },
+                modal: {
+                    ondismiss: function() {
+                        // Reset button if payment is cancelled
+                        if (button) { button.innerHTML = originalText; button.disabled = false; }
+                    }
+                }
+            };
+
+            const rzp = new Razorpay(options);
+            rzp.open();
+        }
+        function handlePaymentSuccess(response) {
+            // Store payment details
+            const paymentData = {
+                ...bookingData,
+                paymentId: response.razorpay_payment_id,
+                paymentMethod: 'razorpay',
+                paidAmount: discountedPrice,
+                paymentStatus: 'completed',
+                paymentTime: new Date().toISOString(),
+                bookingId: 'DC' + Date.now().toString().slice(-6)
+            };
+
+            // Store in localStorage
+            try {
+                const bookings = JSON.parse(localStorage.getItem('darbhangaBookings') || '[]');
+                bookings.push(paymentData);
+                localStorage.setItem('darbhangaBookings', JSON.stringify(bookings));
+                localStorage.removeItem('currentBooking');
+            } catch (e) {
+                console.warn('localStorage unavailable:', e);
+            }
+
+            // Show success notification
+            showNotification('✅ Payment successful! Redirecting...', 'success');
+
+            // Send WhatsApp message with payment confirmation
+            sendPaymentConfirmation(paymentData);
+
+            // Redirect to confirmation page
+            setTimeout(() => {
+                window.location.href = 'confirmation.html?paid=true';
+            }, 2000);
+        }
+
+        function payLater() {
+            // Store booking without payment
+            const bookingData_payLater = {
+                ...bookingData,
+                paymentMethod: 'cash',
+                paidAmount: 0,
+                paymentStatus: 'pending',
+                bookingTime: new Date().toISOString(),
+                bookingId: 'DC' + Date.now().toString().slice(-6)
+            };
+
+            // Store in localStorage
+            try {
+                const bookings = JSON.parse(localStorage.getItem('darbhangaBookings') || '[]');
+                bookings.push(bookingData_payLater);
+                localStorage.setItem('darbhangaBookings', JSON.stringify(bookings));
+                localStorage.removeItem('currentBooking');
+            } catch (e) {
+                console.warn('localStorage unavailable:', e);
+            }
+
+            // Send WhatsApp message
+            sendBookingConfirmation(bookingData_payLater);
+
+            // Show success and redirect
+            showNotification('✅ Booking confirmed! Redirecting...', 'success');
+            setTimeout(() => {
+                window.location.href = 'confirmation.html?paid=false';
+            }, 2000);
+        }
+
+        function sendPaymentConfirmation(data) {
+            const phoneNumber = "917903628761";
+            const currentTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+            
+            const text = `🎉 *PAYMENT RECEIVED - DARBHANGA CONNECT*%0A%0A` +
+                         `💳 *Payment ID:* ${data.paymentId}%0A` +
+                         `🆔 *Booking ID:* ${data.bookingId}%0A` +
+                         `👤 *Customer:* ${data.name}%0A` +
+                         `📱 *Phone:* +91 ${data.phone}%0A` +
+                         `🔧 *Service:* ${data.service}%0A` +
+                         `📍 *Area:* ${data.area}%0A` +
+                         `🏡 *Address:* ${data.address}%0A` +
+                         `💰 *Amount Paid:* ₹${data.paidAmount}%0A` +
+                         `⏰ *Payment Time:* ${currentTime}%0A%0A` +
+                         `✅ *PRIORITY SERVICE - Please arrange technician ASAP*`;
+            
+            window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+        }
+        function sendBookingConfirmation(data) {
+            const phoneNumber = "917903628761";
+            const currentTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+            
+            const text = `🏠 *NEW BOOKING - DARBHANGA CONNECT*%0A%0A` +
+                         `🆔 *Booking ID:* ${data.bookingId}%0A` +
+                         `👤 *Customer:* ${data.name}%0A` +
+                         `📱 *Phone:* +91 ${data.phone}%0A` +
+                         `🔧 *Service:* ${data.service}%0A` +
+                         `📍 *Area:* ${data.area}%0A` +
+                         `🏡 *Address:* ${data.address}%0A` +
+                         `💰 *Amount:* ₹${data.price} (Cash on Service)%0A` +
+                         `⏰ *Booking Time:* ${currentTime}%0A%0A` +
+                         `✅ *Please confirm availability and arrival time.*`;
+            
+            window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+        }
+
+        function showNotification(message, type = 'info') {
+            const existing = document.querySelector('.notification');
+            if (existing) existing.remove();
+            
+            const notification = document.createElement('div');
+            notification.className = `notification fixed top-20 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300`;
+            
+            if (type === 'success') {
+                notification.classList.add('bg-green-500', 'text-white');
+            } else if (type === 'error') {
+                notification.classList.add('bg-red-500', 'text-white');
+            } else {
+                notification.classList.add('bg-blue-500', 'text-white');
+            }
+            
+            notification.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium">${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white hover:text-gray-200">×</button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+</html>

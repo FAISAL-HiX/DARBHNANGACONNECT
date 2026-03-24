@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Darbhanga Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="font-sans" style="visibility:hidden;">
+    
+    <nav class="liquid-nav sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-xl font-bold text-slate-800">Darbhanga Connect - Admin</h1>
+            <div class="flex items-center gap-4">
+                <span id="adminWelcome" class="text-sm text-slate-700"></span>
+                <button onclick="logout()" class="bg-red-500/80 backdrop-blur-sm text-white px-4 py-2 rounded-xl text-sm hover:bg-red-600/80 transition-all">
+                    Logout
+                </button>
+                <div class="text-sm text-slate-700">
+                    <span id="total-bookings">0 Bookings</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-6">
+        
+        <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="liquid-container p-6 rounded-xl">
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Total Bookings</h3>
+                <div id="stats-total" class="text-3xl font-bold text-cyan-600">0</div>
+            </div>
+            <div class="liquid-container p-6 rounded-xl">
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Paid Bookings</h3>
+                <div id="stats-paid" class="text-3xl font-bold text-green-600">0</div>
+            </div>
+            <div class="liquid-container p-6 rounded-xl">
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Total Revenue</h3>
+                <div id="stats-revenue" class="text-3xl font-bold text-green-600">₹0</div>
+            </div>
+            <div class="liquid-container p-6 rounded-xl">
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Popular Service</h3>
+                <div id="stats-popular" class="text-lg font-bold text-purple-600">-</div>
+            </div>
+        </div>
+
+        <div class="liquid-container rounded-xl">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-slate-900">Recent Bookings</h2>
+                    <button onclick="clearAllBookings()" 
+                            class="bg-red-500/80 backdrop-blur-sm text-white px-4 py-2 rounded-xl text-sm hover:bg-red-600/80 transition-all">
+                        Clear All
+                    </button>
+                </div>
+            </div>
+            
+            <div id="bookings-list" class="p-6">
+                <div class="text-center text-slate-400 py-8">
+                    No bookings found. Bookings will appear here when customers make reservations.
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check admin authentication
+            checkAdminAuth();
+            
+            loadBookings();
+            
+            // Refresh every 30 seconds
+            setInterval(loadBookings, 30000);
+        });
+        
+        function checkAdminAuth() {
+            const currentUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+            
+            if (!currentUser) {
+                window.location.replace('login.html');
+                return;
+            }
+            
+            const user = JSON.parse(currentUser);
+            if (user.role !== 'admin') {
+                window.location.replace('index.html');
+                return;
+            }
+            
+            // Auth passed — show the page
+            document.body.style.visibility = 'visible';
+            
+            // Show admin welcome
+            document.getElementById('adminWelcome').textContent = `Welcome, ${user.name}`;
+        }
+        
+        function logout() {
+            localStorage.removeItem('currentUser');
+            sessionStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+        
+        function loadBookings() {
+            const bookings = JSON.parse(localStorage.getItem('darbhangaBookings') || '[]');
+            const bookingsList = document.getElementById('bookings-list');
+            
+            if (bookings.length === 0) {
+                bookingsList.innerHTML = `
+                    <div class="text-center text-gray-500 py-8">
+                        No bookings found. Bookings will appear here when customers make reservations.
+                    </div>
+                `;
+                return;
+            }
+            
+            // Update stats
+            updateStats(bookings);
+            
+            // Display bookings
+            bookingsList.innerHTML = bookings.reverse().map((booking, index) => {
+                const isPaid = booking.paymentStatus === 'completed';
+                const paymentBadge = isPaid 
+                    ? '<span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium ml-2">PAID</span>'
+                    : '<span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs font-medium ml-2">PENDING</span>';
+                
+                return `
+                <div class="border-b border-gray-200 py-4 ${index === 0 ? 'bg-blue-50' : ''}">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">
+                                    ${booking.service}
+                                </span>
+                                ${paymentBadge}
+                                <span class="text-xs text-gray-500">
+                                    ${new Date(booking.timestamp || booking.paymentTime || booking.bookingTime).toLocaleString('en-IN')}
+                                </span>
+                            </div>
+                            <div class="text-sm space-y-1">
+                                <div><strong>Customer:</strong> ${booking.name}</div>
+                                <div><strong>Phone:</strong> +91 ${booking.phone}</div>
+                                <div><strong>Location:</strong> ${booking.area}</div>
+                                <div><strong>Address:</strong> ${booking.address}</div>
+                                ${booking.paymentId ? `<div><strong>Payment ID:</strong> ${booking.paymentId}</div>` : ''}
+                                ${booking.bookingId ? `<div><strong>Booking ID:</strong> ${booking.bookingId}</div>` : ''}
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-lg font-bold ${isPaid ? 'text-green-600' : 'text-orange-600'}">
+                                ₹${booking.paidAmount || booking.price}
+                            </div>
+                            <div class="text-xs text-gray-500 mb-2">
+                                ${isPaid ? 'Paid Online' : 'Cash on Service'}
+                            </div>
+                            <button onclick="callCustomer('${booking.phone}')" 
+                                    class="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600">
+                                📞 Call
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+        }
+        
+        function updateStats(bookings) {
+            const total = bookings.length;
+            const paidBookings = bookings.filter(b => b.paymentStatus === 'completed').length;
+            const totalRevenue = bookings.reduce((sum, booking) => {
+                return sum + (booking.paidAmount || 0);
+            }, 0);
+            
+            // Count services
+            const serviceCounts = {};
+            bookings.forEach(booking => {
+                serviceCounts[booking.service] = (serviceCounts[booking.service] || 0) + 1;
+            });
+            
+            const popularService = Object.keys(serviceCounts).reduce((a, b) => 
+                serviceCounts[a] > serviceCounts[b] ? a : b, '-'
+            );
+            
+            document.getElementById('stats-total').textContent = total;
+            document.getElementById('stats-paid').textContent = paidBookings;
+            document.getElementById('stats-revenue').textContent = `₹${totalRevenue}`;
+            document.getElementById('stats-popular').textContent = popularService;
+            document.getElementById('total-bookings').textContent = `${total} Bookings`;
+        }
+        
+        function callCustomer(phone) {
+            window.open(`tel:+91${phone}`);
+        }
+        
+        function clearAllBookings() {
+            if (confirm('Are you sure you want to clear all bookings? This cannot be undone.')) {
+                localStorage.removeItem('darbhangaBookings');
+                loadBookings();
+            }
+        }
+    </script>
+
+</body>
+</html>
